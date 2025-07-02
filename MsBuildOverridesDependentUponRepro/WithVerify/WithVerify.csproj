@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Verify" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="**\*.csv">
+            <ParentFile>$([System.Text.RegularExpressions.Regex]::Match(%(Filename)%(Extension), `^[^{\\.]*`)).cs</ParentFile>
+            <DependentUpon>$([System.Text.RegularExpressions.Regex]::Match(%(Filename)%(Extension), `^[^{\\.]*`)).cs</DependentUpon>
+            <MyProperty>$([System.Text.RegularExpressions.Regex]::Match(%(Filename)%(Extension), `^[^{\\.]*`)).cs</MyProperty>
+        </None>
+    </ItemGroup>
+    
+</Project>
